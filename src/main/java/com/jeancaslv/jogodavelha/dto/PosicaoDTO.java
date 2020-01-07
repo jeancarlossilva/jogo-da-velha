@@ -1,4 +1,4 @@
-package com.jeancaslv.jogodavelha.DTO;
+package com.jeancaslv.jogodavelha.dto;
 
 import java.io.Serializable;
 

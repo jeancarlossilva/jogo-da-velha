@@ -3,26 +3,28 @@ package com.jeancaslv.jogodavelha.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "PARTIDA")
-public class Partida implements Serializable{
-	
+public class Partida implements Serializable {
+
 	private static final long serialVersionUID = 1539359495748542133L;
 
 	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
-	
+
 	private String firstPlayer;
-	
+
 	private String proximoJogador;
-	
-	private String[][] tabuleiro = new String[3][3];
-	
-	public Partida(String id, String firstPlayer, String proximoJogador) {
-		this.id = id;
+
+	public Partida(String firstPlayer, String proximoJogador) {
 		this.firstPlayer = firstPlayer;
 		this.proximoJogador = proximoJogador;
 	}
@@ -53,14 +55,5 @@ public class Partida implements Serializable{
 	public void setProximoJogador(String proximoJogador) {
 		this.proximoJogador = proximoJogador;
 	}
-
-	public String[][] getTabuleiro() {
-		return tabuleiro;
-	}
-
-	public void setTabuleiro(String[][] tabuleiro) {
-		this.tabuleiro = tabuleiro;
-	}
-	
 
 }
